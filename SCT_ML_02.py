@@ -118,7 +118,9 @@ cluster_centers = kmeans.cluster_centers_
 
 # CLUSTER SUMMARY
 cluster_summary = data.groupby('Cluster').mean()
-print(cluster_summary)
+cluster_summary_str = cluster_summary.to_string()
+with open('cluster_summary.txt', 'w') as f:
+    f.write(cluster_summary_str)
 sns.pairplot(data, hue="Cluster", palette="Set2")
 plt.show()
 
